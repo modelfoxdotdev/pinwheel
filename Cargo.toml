@@ -23,8 +23,8 @@ path = "lib.rs"
 futures = "0.3"
 futures-signals = "0.3"
 pin-project = "1"
-pinwheel_elements_macro = { path = "elements/macro" }
-pinwheel_macro = { path = "macro" }
+pinwheel_elements_macro = { version = "0.1", path = "elements/macro" }
+pinwheel_macro = { version = "0.1", path = "macro" }
 serde = "1"
 serde_json = "1"
 tracing = "0.1"
