@@ -1,0 +1,21 @@
+[package]
+authors = ["Tangram <root@tangram.xyz"]
+description = "Build web applications with Rust."
+documentation = "https://docs.rs/pinwheel"
+edition = "2018"
+homepage = "https://github.com/tangramxyz/pinwheel"
+license = "MIT"
+name = "pinwheel_macro"
+publish = true
+repository = "https://github.com/tangramxyz/pinwheel"
+version = "0.1.0"
+
+[lib]
+path = "lib.rs"
+proc-macro = true
+
+[dependencies]
+heck = "0.3"
+proc-macro2 = "1"
+quote = "1"
+syn = { version = "1", features = ["full", "extra-traits"] }
