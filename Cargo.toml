@@ -1,7 +1,8 @@
 [workspace]
 members = [
   "macro",
-  "elements/macro"
+  "elements/macro",
+  "examples/counter",
 ]
 
 [package]
