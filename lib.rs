@@ -1,6 +1,5 @@
 pub mod app;
 pub mod attribute_value;
-pub mod classes;
 pub mod component;
 pub mod dehydrate;
 pub mod elements;
@@ -19,10 +18,9 @@ mod server;
 pub use crate::server::*;
 
 pub mod prelude {
-	pub use crate::BoxSignal;
 	pub use crate::{
 		app::App,
-		classes, clone,
+		clone,
 		component::Component,
 		dehydrate::Dehydrate,
 		elements::{html, html::*, svg},
@@ -35,7 +33,7 @@ pub mod prelude {
 		signal::{Mutable, Signal, SignalExt},
 		signal_vec::{MutableVec, SignalVec, SignalVecExt},
 	};
-	pub use pinwheel_macro::ComponentBuilder;
+	pub use pinwheel_macro::{builder, children, new};
 }
 
 pub use futures_signals::signal;
@@ -51,8 +49,6 @@ macro_rules! clone {
 pub fn html<T: component::Component>(component: T) -> String {
 	format!("<!doctype html>{}", component.into_node())
 }
-
-pub type BoxSignal<T> = Box<dyn 'static + Unpin + futures_signals::signal::Signal<Item = T>>;
 
 pub fn pending_with<T>(value: T) -> PendingWith<T> {
 	PendingWith(value)

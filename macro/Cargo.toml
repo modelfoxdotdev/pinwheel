@@ -8,7 +8,7 @@ license = "MIT"
 name = "pinwheel_macro"
 publish = true
 repository = "https://github.com/tangramxyz/pinwheel"
-version = "0.1.0"
+version = "0.2.0"
 
 [lib]
 path = "lib.rs"
