@@ -1,5 +1,5 @@
 use super::node::Node;
-use futures::executor::block_on;
+use futures::FutureExt;
 use futures_signals::signal::{Signal, SignalExt};
 
 pub struct SignalNode {
@@ -12,7 +12,7 @@ impl SignalNode {
 		T: Into<Node>,
 		S: 'static + Unpin + Signal<Item = T>,
 	{
-		let node = block_on(signal.first().to_future()).into();
+		let node = signal.first().to_future().now_or_never().unwrap().into();
 		SignalNode {
 			child: Box::new(node),
 		}

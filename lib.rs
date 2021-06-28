@@ -28,7 +28,6 @@ pub mod prelude {
 		hydrate::hydrate,
 		text, Element, Fragment, Namespace, Node, SignalNode, SignalVecNode, Text,
 	};
-	pub use crate::{pending_with, PendingWith};
 	pub use futures_signals::{
 		signal::{Mutable, Signal, SignalExt},
 		signal_vec::{MutableVec, SignalVec, SignalVecExt},
@@ -48,20 +47,4 @@ macro_rules! clone {
 
 pub fn html<T: component::Component>(component: T) -> String {
 	format!("<!doctype html>{}", component.into_node())
-}
-
-pub fn pending_with<T>(value: T) -> PendingWith<T> {
-	PendingWith(value)
-}
-
-pub struct PendingWith<T>(T);
-
-impl<T> std::future::Future for PendingWith<T> {
-	type Output = T;
-	fn poll(
-		self: std::pin::Pin<&mut Self>,
-		_cx: &mut std::task::Context<'_>,
-	) -> std::task::Poll<Self::Output> {
-		std::task::Poll::Pending
-	}
 }

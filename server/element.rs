@@ -4,7 +4,7 @@ use crate::{
 	option_string_value::{IntoOptionStringValue, OptionStringValue},
 	string_value::IntoStringValue,
 };
-use futures::{executor::block_on, stream::StreamExt};
+use futures::{future::FutureExt, stream::StreamExt};
 use futures_signals::{
 	signal::{Signal, SignalExt},
 	signal_vec::{SignalVec, SignalVecExt},
@@ -91,7 +91,12 @@ impl Element {
 	{
 		self.attributes.push(Attribute {
 			name: name.into(),
-			value: block_on(value.first().to_future()).into_attribute_value(),
+			value: value
+				.first()
+				.to_future()
+				.now_or_never()
+				.unwrap()
+				.into_attribute_value(),
 		});
 		self
 	}
@@ -112,7 +117,12 @@ impl Element {
 		T: IntoOptionStringValue,
 	{
 		self.classes.push(Class {
-			value: block_on(value.first().to_future()).into_option_string_value(),
+			value: value
+				.first()
+				.to_future()
+				.now_or_never()
+				.unwrap()
+				.into_option_string_value(),
 		});
 		self
 	}
@@ -135,7 +145,12 @@ impl Element {
 	{
 		self.styles.push(Style {
 			name: name.into(),
-			value: block_on(value.first().to_future()).into_option_string_value(),
+			value: value
+				.first()
+				.to_future()
+				.now_or_never()
+				.unwrap()
+				.into_option_string_value(),
 		});
 		self
 	}
@@ -174,7 +189,7 @@ impl Element {
 		T: Into<Node>,
 		S: 'static + Unpin + Signal<Item = T>,
 	{
-		let child = block_on(signal.first().to_future()).into();
+		let child = signal.first().to_future().now_or_never().unwrap().into();
 		self.children.push(child);
 		self
 	}
@@ -185,15 +200,16 @@ impl Element {
 		S: 'static + Unpin + SignalVec<Item = T>,
 	{
 		let mut children = Vec::new();
-		block_on(
-			signal_vec
-				.map(|child| child.into())
-				.to_stream()
-				.map(|diff| {
-					diff.apply_to_vec(&mut children);
-				})
-				.next(),
-		);
+
+		signal_vec
+			.map(|child| child.into())
+			.to_stream()
+			.map(|diff| {
+				diff.apply_to_vec(&mut children);
+			})
+			.next()
+			.now_or_never()
+			.unwrap();
 		self.children.append(&mut children);
 		self
 	}

@@ -1,5 +1,5 @@
 use crate::string_value::{IntoStringValue, StringValue};
-use futures::executor::block_on;
+use futures::FutureExt;
 use futures_signals::signal::{Signal, SignalExt};
 use std::fmt::Write;
 
@@ -24,7 +24,12 @@ impl Text {
 		S: 'static + Unpin + Signal<Item = T>,
 	{
 		Text {
-			value: block_on(value.first().to_future()).into_string_value(),
+			value: value
+				.first()
+				.to_future()
+				.now_or_never()
+				.unwrap()
+				.into_string_value(),
 		}
 	}
 }

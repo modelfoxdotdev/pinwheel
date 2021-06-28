@@ -1,5 +1,5 @@
 use super::node::Node;
-use futures::{executor::block_on, stream::StreamExt};
+use futures::{stream::StreamExt, FutureExt};
 use futures_signals::signal_vec::{SignalVec, SignalVecExt};
 
 pub struct SignalVecNode {
@@ -13,15 +13,16 @@ impl SignalVecNode {
 		S: 'static + Unpin + SignalVec<Item = T>,
 	{
 		let mut children = Vec::new();
-		block_on(
-			signal_vec
-				.map(|child| child.into())
-				.to_stream()
-				.map(|diff| {
-					diff.apply_to_vec(&mut children);
-				})
-				.next(),
-		);
+
+		signal_vec
+			.map(|child| child.into())
+			.to_stream()
+			.map(|diff| {
+				diff.apply_to_vec(&mut children);
+			})
+			.next()
+			.now_or_never()
+			.unwrap();
 		SignalVecNode { children }
 	}
 }
