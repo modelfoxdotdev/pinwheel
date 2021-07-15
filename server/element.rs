@@ -243,7 +243,8 @@ impl std::fmt::Display for Element {
 				}
 			}
 		}
-		if !self.classes.is_empty() {
+		let has_classes = self.classes.iter().any(|class| class.value.0.is_some());
+		if has_classes {
 			write!(f, " class=\"")?;
 			let mut first = true;
 			for class in self.classes.iter() {
@@ -258,7 +259,8 @@ impl std::fmt::Display for Element {
 			}
 			write!(f, "\"")?;
 		}
-		if !self.styles.is_empty() {
+		let has_styles = self.styles.iter().any(|style| style.value.0.is_some());
+		if has_styles {
 			write!(f, " style=\"")?;
 			let mut first = true;
 			for style in self.styles.iter() {
