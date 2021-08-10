@@ -6,15 +6,15 @@ members = [
 ]
 
 [package]
-authors = ["Tangram <root@tangram.xyz"]
+authors = ["Tangram <root@tangram.dev"]
 description = "Build web applications with Rust."
 documentation = "https://docs.rs/pinwheel"
 edition = "2018"
-homepage = "https://github.com/tangramxyz/pinwheel"
+homepage = "https://github.com/tangramdotdev/pinwheel"
 license = "MIT"
 name = "pinwheel"
 publish = true
-repository = "https://github.com/tangramxyz/pinwheel"
+repository = "https://github.com/tangramdotdev/pinwheel"
 version = "0.2.0"
 
 [lib]
