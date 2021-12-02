@@ -9,12 +9,13 @@ members = [
 authors = ["Tangram <root@tangram.dev"]
 description = "Build web applications with Rust."
 documentation = "https://docs.rs/pinwheel"
-edition = "2018"
+edition = "2021"
 homepage = "https://github.com/tangramdotdev/pinwheel"
 license = "MIT"
 name = "pinwheel"
 publish = true
 repository = "https://github.com/tangramdotdev/pinwheel"
+rust-version = "1.56"
 version = "0.2.0"
 
 [lib]
