@@ -10,6 +10,11 @@ element!(
 	/// The HTML `<html>` element represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element.
 	namespace = "html",
 	tag = "html",
+	attributes = {
+		manifest,
+		version,
+		xmlns,
+	},
 );
 
 // Document metadata.
@@ -19,12 +24,19 @@ element!(
 	namespace = "html",
 	tag = "base",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		href,
+		target,
+	},
 );
 
 element!(
 	/// The HTML `<head>` element contains machine-readable information (metadata) about the document, like its title, scripts, and style sheets.
 	namespace = "html",
 	tag = "head",
+	attributes = {
+		profile,
+	},
 );
 
 element!(
@@ -32,6 +44,27 @@ element!(
 	namespace = "html",
 	tag = "link",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		//as,
+		charset,  // obsolete
+		crossorigin,
+		disabled,
+		href,
+		hreflang,
+		imagesizes,
+		imagesrcset,
+		integrity,
+		media,
+		methods, // non-standard
+		prefetch,
+		referrerpolicy,
+		rel,
+		rev, // obsolete
+		sizes,
+		target, // non-standard
+		//title,
+		//type,
+	},
 );
 
 element!(
@@ -39,6 +72,12 @@ element!(
 	namespace = "html",
 	tag = "meta",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		charset,
+		content,
+		http_equiv, // http-equiv
+		name,
+	},
 );
 
 element!(
@@ -46,6 +85,12 @@ element!(
 	namespace = "html",
 	tag = "style",
 	kind = HtmlElementKind::RawText,
+	attributes = {
+		media,
+		//nonce,
+		scoped, // deprecated
+		//title,
+	},
 );
 
 element!(
@@ -61,6 +106,36 @@ element!(
 	/// The HTML `<body> Element represents the content of an HTML document. There can be only one <body>` element in a document.
 	namespace = "html",
 	tag = "body",
+	attributes = {
+		alink,
+		background,
+		bgcolor,
+		bottommargin,
+		leftmargin,
+		link,
+		onafterprint,
+		onbeforeprint,
+		onbeforeunload,
+		//onblur,
+		//onerror,
+		//onfocus,
+		onhashchange,
+		onlangaugechange,
+		onload,
+		onmessage,
+		onoffline,
+		ononline,
+		onpopstate,
+		onredo,
+		onresize,
+		onstorage,
+		onundo,
+		onunload,
+		rightmargin,
+		text,
+		topmargin,
+		vlink,
+	},
 );
 
 // Content sectioning
@@ -155,12 +230,18 @@ element!(
 	/// The HTML `<blockquote>` Element (or HTML Block Quotation Element) indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation (see Notes for how to change it). A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the cite element.
 	namespace = "html",
 	tag = "blockquote",
+	attributes = {
+		cite,
+	},
 );
 
 element!(
 	/// The HTML `<dd>` element provides the description, definition, or value for the preceding term (dt) in a description list (dl).
 	namespace = "html",
 	tag = "dd",
+	attributes = {
+		dd,
+	},
 );
 
 element!(
@@ -199,18 +280,34 @@ element!(
 	namespace = "html",
 	tag = "hr",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		align,
+		color,
+		noshade,
+		size,
+		width,
+	},
 );
 
 element!(
 	/// The HTML `<li>` element is used to represent an item in a list.
 	namespace = "html",
 	tag = "li",
+	attributes = {
+		value,
+		//type
+	},
 );
 
 element!(
 	/// The HTML `<ol>` element represents an ordered list of items - typically rendered as a numbered list.
 	namespace = "html",
 	tag = "ol",
+	attributes = {
+		reversed,
+		start,
+		//type
+	},
 );
 
 element!(
@@ -223,12 +320,21 @@ element!(
 	/// The HTML `<pre>` element represents preformatted text which is to be presented exactly as written in the HTML file.
 	namespace = "html",
 	tag = "pre",
+	attributes = {
+		cols,
+		width,
+		wrap,
+	},
 );
 
 element!(
 	/// The HTML `<ul>` element represents an unordered list of items, typically rendered as a bulleted list.
 	namespace = "html",
 	tag = "ul",
+	attributes = {
+		compact,
+		//type,
+	},
 );
 
 // Inline text semantics.
@@ -238,13 +344,17 @@ element!(
 	namespace = "html",
 	tag = "a",
 	attributes = {
+		charset,
+		coords,
 		download,
 		href,
 		hreflang,
 		media,
+		name,
 		ping,
 		referrerpolicy,
 		rel,
+		rev,
 		shape,
 		target,
 	},
@@ -272,6 +382,9 @@ element!(
 	/// The HTML Bidirectional Text Override element (`<bdo>`) overrides the current directionality of text, so that the text within is rendered in a different direction.
 	namespace = "html",
 	tag = "bdo",
+	attributes = {
+		//dir,
+	},
 );
 
 element!(
@@ -297,12 +410,15 @@ element!(
 	/// The HTML `<data>` element links a given piece of content with a machine-readable translation. If the content is time- or date-related, the time element must be used.
 	namespace = "html",
 	tag = "data",
+	attributes = {
+		value,
+	},
 );
 
 element!(
 	/// The HTML Definition element (`<dfn>`) is used to indicate the term being defined within the context of a definition phrase or sentence.
 	namespace = "html",
-	tag = "fdn",
+	tag = "dfn",
 );
 
 element!(
@@ -333,6 +449,9 @@ element!(
 	/// The HTML `<q>` element indicates that the enclosed text is a short inline quotation. Most modern browsers implement this by surrounding the text in quotation marks.
 	namespace = "html",
 	tag = "q",
+	attributes = {
+		cite,
+	},
 );
 
 element!(
@@ -411,6 +530,9 @@ element!(
 	/// The HTML `<time>` element represents a specific period in time.
 	namespace = "html",
 	tag = "time",
+	attributes = {
+		datetime,
+	},
 );
 
 element!(
@@ -439,12 +561,37 @@ element!(
 	namespace = "html",
 	tag = "area",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		alt,
+		coords,
+		download,
+		href,
+		hreflang,
+		name,
+		nohref,
+		ping,
+		referrerpolicy,
+		rel,
+		shape,
+		target,
+		//type
+	},
 );
 
 element!(
 	/// The HTML `<audio>` element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element: the browser will choose the most suitable one. It can also be the destination for streamed media, using a MediaStream.
 	namespace = "html",
 	tag = "audio",
+	attributes = {
+		autoplay,
+		controls,
+		crossorigin,
+		disableremoteplayback,
+		//loop,
+		muted,
+		preload,
+		src,
+	},
 );
 
 element!(
@@ -452,12 +599,36 @@ element!(
 	namespace = "html",
 	tag = "img",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		align,
+		alt,
+		border,
+		crossorigin,
+		decoding,
+		height,
+		hspace,
+		intrinsicsize,
+		ismap,
+		loading,
+		longdesc,
+		name,
+		referrerpolicy,
+		sizes,
+		src,
+		srcset,
+		width,
+		usemap,
+		vspace,
+	},
 );
 
 element!(
 	/// The HTML `<map>` element is used with area elements to define an image map (a clickable link area).
 	namespace = "html",
 	tag = "map",
+	attributes = {
+		name,
+	},
 );
 
 element!(
@@ -465,12 +636,36 @@ element!(
 	namespace = "html",
 	tag = "track",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		default,
+		kind,
+		label,
+		src,
+		srclang,
+	},
 );
 
 element!(
 	/// The HTML Video element (`<video>) embeds a media player which supports video playback into the document. You can use <video>` for audio content as well, but the audio element may provide a more appropriate user experience.
 	namespace = "html",
 	tag = "video",
+	attributes = {
+		autoplay,
+		autopictureinpicture,
+		controls,
+		controlslist,
+		crossorigin,
+		disablepictureinpicture,
+		disableremoteplayback,
+		height,
+		//loop,
+		muted,
+		playsinline,
+		poster,
+		preload,
+		src,
+		width,
+	},
 );
 
 // Embedded content.
@@ -480,18 +675,56 @@ element!(
 	namespace = "html",
 	tag = "embed",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		height,
+		src,
+		//type,
+		width,
+	},
 );
 
 element!(
 	/// The HTML Inline Frame element (`<iframe>`) represents a nested browsing context, embedding another HTML page into the current one.
 	namespace = "html",
 	tag = "iframe",
+	attributes = {
+		align,
+		allow,
+		allowfullscreen,
+		allowpaymentrequest,
+		csp,
+		frameborder,
+		height,
+		loading,
+		longdesc,
+		marginheight,
+		marginwidth,
+		name,
+		referrerpolicy,
+		sandbox,
+		scrolling,
+		src,
+		srcdoc,
+	},
 );
 
 element!(
 	/// The HTML `<object>` element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
 	namespace = "html",
 	tag = "object",
+	attributes = {
+		archive,
+		border,
+		classid,
+		codebase,
+		data,
+		declare,
+		form,
+		height,
+		namestandby,
+		//type,
+		usemap,
+	},
 );
 
 element!(
@@ -499,6 +732,12 @@ element!(
 	namespace = "html",
 	tag = "param",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		name,
+		//type,
+		value,
+		valuetype,
+	},
 );
 
 element!(
@@ -511,6 +750,10 @@ element!(
 	/// The HTML Portal element (`<portal>`) enables the embedding of another HTML page into the current one for the purposes of allowing smoother navigation into new pages.
 	namespace = "html",
 	tag = "portal",
+	attributes = {
+		referrerpolicy,
+		src,
+	},
 );
 
 element!(
@@ -518,6 +761,13 @@ element!(
 	namespace = "html",
 	tag = "source",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		media,
+		sizes,
+		src,
+		srcset,
+		//type,
+	},
 );
 
 // SVG and MathML.
@@ -526,12 +776,40 @@ element!(
 	/// The svg element is a container that defines a new coordinate system and viewport. It is used as the outermost element of SVG documents, but it can also be used to embed an SVG fragment inside an SVG or HTML document.
 	namespace = "html",
 	tag = "svg",
+	attributes = {
+		baseProfile,
+		contentScriptType,
+		contentStyleType,
+		height,
+		preserveAspectRatio,
+		version,
+		viewBox,
+		width,
+		x,
+		y,
+	},
 );
 
 element!(
 	/// The top-level element in MathML is `<math>. Every valid MathML instance must be wrapped in <math> tags. In addition you must not nest a second <math>` element in another, but you can have an arbitrary number of other child elements in it.
 	namespace = "html",
 	tag = "math",
+	attributes = {
+		//class,
+		//dir,
+		display,
+		displaystyle,
+		href,
+		//id,
+		infixlinebreakstyle,
+		mathbackground,
+		mathcolor,
+		//mod,
+		scriptlevel,
+		scriptminsize,
+		scriptsizemultiplier,
+		//style,
+	},
 );
 
 // Scripting
@@ -540,6 +818,11 @@ element!(
 	/// Use the HTML `<canvas>` element with either the canvas scripting API or the WebGL API to draw graphics and animations.
 	namespace = "html",
 	tag = "canvas",
+	attributes = {
+		height,
+		moz_opaque, // moz-opaque
+		width,
+	},
 );
 
 element!(
@@ -553,6 +836,19 @@ element!(
 	namespace = "html",
 	tag = "script",
 	kind = HtmlElementKind::RawText,
+	attributes = {
+		//async,
+		charset,
+		crossorigin,
+		defer,
+		integrity,
+		language,
+		nomodule,
+		//nonce,
+		referrerpolicy,
+		src,
+		//type,
+	},
 );
 
 // Demarcating edits.
@@ -561,12 +857,20 @@ element!(
 	/// The HTML `<del>` element represents a range of text that has been deleted from a document.
 	namespace = "html",
 	tag = "del",
+	attributes = {
+		cite,
+		datetime,
+	},
 );
 
 element!(
 	/// The HTML `<ins>` element represents a range of text that has been added to a document.
 	namespace = "html",
 	tag = "ins",
+	attributes = {
+		cite,
+		datetime
+	},
 );
 
 // Table content.
@@ -582,54 +886,128 @@ element!(
 	namespace = "html",
 	tag = "col",
 	kind = HtmlElementKind::Void,
+	attributes = {
+		span,
+	},
 );
 
 element!(
 	/// The HTML `<colgroup>` element defines a group of columns within a table.
 	namespace = "html",
 	tag = "colgroup",
+	attributes = {
+		span,
+	},
 );
 
 element!(
 	/// The HTML `<table>` element represents tabular data - that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.
 	namespace = "html",
 	tag = "table",
+	attributes = {
+		align,
+		bgcolor,
+		border,
+		cellpadding,
+		cellspacing,
+		frame,
+		rules,
+		summary,
+		width,
+	},
 );
 
 element!(
 	/// The HTML Table Body element (`<tbody>`) encapsulates a set of table rows (tr elements), indicating that they comprise the body of the table (table).
 	namespace = "html",
 	tag = "tbody",
+	attributes = {
+		align,
+		bgcolor,
+		char,
+		charoff,
+		valign,
+	},
 );
 
 element!(
 	/// The HTML `<td>` element defines a cell of a table that contains data. It participates in the table model.
 	namespace = "html",
 	tag = "td",
+	attributes = {
+		abbr,
+		align,
+		axis,
+		bgcolor,
+		char,
+		charoff,
+		colspan,
+		headers,
+		height,
+		rowspan,
+		scope,
+		valign,
+	},
 );
 
 element!(
 	/// The HTML `<tfoot>` element defines a set of rows summarizing the columns of the table.
 	namespace = "html",
 	tag = "tfoot",
+	attributes = {
+		align,
+		bgcolor,
+		char,
+		charoff,
+		valign,
+	},
 );
 
 element!(
 	/// The HTML `<th>` element defines a cell as header of a group of table cells. The exact nature of this group is defined by the scope and headers attributes.
 	namespace = "html",
 	tag = "th",
+	attributes = {
+		abbr,
+		align,
+		axis,
+		bgcolor,
+		char,
+		charoff,
+		colspan,
+		headers,
+		height,
+		rowspan,
+		scope,
+		valign,
+		width,
+	},
 );
 
 element!(
 	/// The HTML `<thead>` element defines a set of rows defining the head of the columns of the table.
 	namespace = "html",
 	tag = "thead",
+	attributes = {
+		align,
+		bgcolor,
+		char,
+		charoff,
+		valign,
+	},
 );
 
 element!(
 	/// The HTML `<tr>` element defines a row of cells in a table. The row's cells can then be established using a mix of td (data cell) and th (header cell) elements.
 	namespace = "html",
 	tag = "tr",
+	attributes = {
+		align,
+		bgcolor,
+		char,
+		charoff,
+		valign,
+	},
 );
 
 // Forms.
@@ -663,6 +1041,11 @@ element!(
 	/// The HTML `<fieldset>` element is used to group several controls as well as labels (label) within a web form.
 	namespace = "html",
 	tag = "fieldset",
+	attributes = {
+		disabled?,
+		form,
+		name,
+	},
 );
 
 element!(
@@ -731,6 +1114,9 @@ element!(
 	/// The HTML `<label>` element represents a caption for an item in a user interface.
 	namespace = "html",
 	tag = "label",
+	//attributes = {
+	//for,
+	//},
 );
 
 element!(
@@ -743,36 +1129,74 @@ element!(
 	/// The HTML `<meter>` element represents either a scalar value within a known range or a fractional value.
 	namespace = "html",
 	tag = "meter",
+	attributes = {
+		form,
+		high,
+		low,
+		max,
+		min,
+		optimum,
+		value,
+	},
 );
 
 element!(
 	/// The HTML `<optgroup>` element creates a grouping of options within a select element.
 	namespace = "html",
 	tag = "optgroup",
+	attributes = {
+		disabled?,
+		label,
+	},
 );
 
 element!(
 	/// The HTML `<option> element is used to define an item contained in a select, an optgroup, or a datalist element. As such, <option>` can represent menu items in popups and other lists of items in an HTML document.
 	namespace = "html",
 	tag = "option",
+	attributes = {
+		disabled?,
+		label,
+		selected?,
+		value,
+	},
 );
 
 element!(
 	/// The HTML Output element (`<output>`) is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.
 	namespace = "html",
 	tag = "output",
+	attributes = {
+		//for,
+		form,
+		name,
+	},
 );
 
 element!(
 	/// The HTML `<progress>` element displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
 	namespace = "html",
 	tag = "progress",
+	attributes = {
+		max,
+		value,
+	},
 );
 
 element!(
 	/// The HTML `<select>` element represents a control that provides a menu of options
 	namespace = "html",
 	tag = "select",
+	attributes = {
+		autocomplete,
+		autofocus?,
+		disabled?,
+		form,
+		multiple?,
+		name,
+		required?,
+		size,
+	},
 	events = {
 		change: InputEvent,
 		input: InputEvent,
@@ -784,6 +1208,24 @@ element!(
 	namespace = "html",
 	tag = "textarea",
 	kind = HtmlElementKind::EscapableRawText,
+	attributes = {
+		//autocapitalize,
+		autocomplete,
+		autocorrect,
+		autofocus?,
+		cols,
+		disabled?,
+		form,
+		maxlength,
+		minlength,
+		name,
+		placeholder,
+		readonly?,
+		required?,
+		rows,
+		//spellcheck,
+		wrap,
+	},
 );
 
 // Interactive elements.
@@ -792,12 +1234,21 @@ element!(
 	/// The HTML Details Element (`<details>`) creates a disclosure widget in which information is visible only when the widget is toggled into an \"open\" state.
 	namespace = "html",
 	tag = "details",
+	attributes = {
+		open?,
+	},
+	events = {
+		toggle: InputEvent,
+	},
 );
 
 element!(
 	/// The HTML `<dialog>` element represents a dialog box or other interactive component, such as a dismissible alert, inspector, or subwindow.
 	namespace = "html",
 	tag = "dialog",
+	attributes = {
+		open,
+	},
 );
 
 element!(
@@ -818,6 +1269,9 @@ element!(
 	/// The HTML `<slot>` element - part of the Web Components technology suite - is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
 	namespace = "html",
 	tag = "slot",
+	attributes = {
+		name,
+	},
 );
 
 element!(
@@ -827,7 +1281,7 @@ element!(
 	kind = HtmlElementKind::Template,
 );
 
-// Obsoltete and deprecated elements.
+// Obsolete and deprecated elements.
 
 // These items are unimplemented.
 
