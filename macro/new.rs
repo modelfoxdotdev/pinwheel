@@ -30,7 +30,7 @@ pub fn new(input: proc_macro2::TokenStream) -> syn::Result<proc_macro2::TokenStr
 	for field in data_struct.fields.iter() {
 		let field_ident = &field.ident;
 		let field_ty = &field.ty;
-		let field_attrs = field_attrs(&field)?;
+		let field_attrs = field_attrs(field)?;
 		match field_attrs.default {
 			None => {
 				args.push(quote! {
