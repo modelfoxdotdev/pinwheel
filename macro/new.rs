@@ -34,7 +34,7 @@ pub fn new(input: proc_macro2::TokenStream) -> syn::Result<proc_macro2::TokenStr
 		match field_attrs.default {
 			None => {
 				args.push(quote! {
-					#field_ident: #field_ty
+					#field_ident: impl Into<#field_ty>
 				});
 				arg_fields.push(quote! {
 					#field_ident: #field_ident.into()
