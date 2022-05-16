@@ -53,8 +53,8 @@ pub fn new(input: proc_macro2::TokenStream) -> syn::Result<proc_macro2::TokenStr
 		};
 	}
 	Ok(quote! {
-		impl#impl_generics #ident#ty_generics #where_clause {
-			pub fn new(#(#args),*) -> #ident#ty_generics {
+		impl #impl_generics #ident #ty_generics #where_clause {
+			pub fn new(#(#args),*) -> #ident #ty_generics {
 				#ident {
 					#(#arg_fields,)*
 					#(#default_fields,)*

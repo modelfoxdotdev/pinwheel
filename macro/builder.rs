@@ -27,14 +27,14 @@ pub fn builder(input: proc_macro2::TokenStream) -> syn::Result<proc_macro2::Toke
 		})
 		.map(|(field_ident, field_ty)| {
 			quote! {
-				pub fn #field_ident(mut self, #field_ident: impl Into<#field_ty>) -> #ident#ty_generics {
+				pub fn #field_ident(mut self, #field_ident: impl Into<#field_ty>) -> #ident #ty_generics {
 					self.#field_ident = #field_ident.into();
 					self
 				}
 			}
 		});
 	Ok(quote! {
-		impl#impl_generics #ident#ty_generics #where_clause {
+		impl #impl_generics #ident #ty_generics #where_clause {
 			#(#fns)*
 		}
 	})

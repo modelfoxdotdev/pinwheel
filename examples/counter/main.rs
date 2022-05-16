@@ -2,15 +2,11 @@ use pinwheel::prelude::*;
 use web_sys as dom;
 
 fn main() {
-	let body = dom::window()
-		.unwrap()
-		.document()
-		.unwrap()
-		.body()
-		.unwrap()
-		.into();
+	let window = dom::window().unwrap();
+	let document = window.document().unwrap();
+	let body = document.body().unwrap();
 	let counter = Counter::new();
-	App::new(body, counter).forget();
+	App::new(body.into(), counter).forget();
 }
 
 struct Counter {

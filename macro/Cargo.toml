@@ -2,7 +2,7 @@
 authors = ["Tangram <root@tangram.dev"]
 description = "Build web applications with Rust."
 documentation = "https://docs.rs/pinwheel"
-edition = "2018"
+edition = "2021"
 homepage = "https://github.com/tangramdotdev/pinwheel"
 license = "MIT"
 name = "pinwheel_macro"

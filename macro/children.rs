@@ -56,7 +56,7 @@ pub fn children(input: proc_macro2::TokenStream) -> syn::Result<proc_macro2::Tok
 		}
 	};
 	Ok(quote! {
-		impl#impl_generics #ident#ty_generics #where_clause {
+		impl #impl_generics #ident #ty_generics #where_clause {
 			#child_fn
 			#children_fn
 			#child_signal_fn
