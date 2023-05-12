@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="pinwheel.svg" title="Pinwheel">
-</p>
-
 # Pinwheel
 
 Pinwheel is a library for writing web user interfaces with Rust.
